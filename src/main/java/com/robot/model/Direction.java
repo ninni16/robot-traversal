@@ -1,4 +1,4 @@
-package com.robot.model;
+package main.java.com.robot.model;
 
 public interface Direction {
     public void moveForward(Position currentPosition);

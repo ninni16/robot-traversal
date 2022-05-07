@@ -1,4 +1,4 @@
-package com.robot.model;
+package main.java.com.robot.model;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
@@ -14,7 +14,7 @@ public class Position {
     private int m;
     private HashSet<String> traversalHistory = new HashSet<>();
 
-    public Position(int x, int y, String direction, int n, int m) {
+    public Position(int x, int y, String direction, int m, int n) {
         this.x = x;
         this.y = y;
         this.direction = direction;

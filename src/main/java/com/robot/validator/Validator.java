@@ -1,8 +1,6 @@
-package com.robot.validator;
+package main.java.com.robot.validator;
 
-import com.robot.model.Position;
-
-import java.util.HashSet;
+import main.java.com.robot.model.Position;
 
 public class Validator {
 

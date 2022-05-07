@@ -1,15 +1,15 @@
-package com.robot.model;
+package main.java.com.robot.model;
 
-import com.robot.validator.ValidationEnums;
-import com.robot.validator.Validator;
+import main.java.com.robot.validator.ValidationEnums;
+import main.java.com.robot.validator.Validator;
 
-public class North implements Direction{
+public class West implements Direction {
     @Override
     public void moveForward(Position currentPosition) {
-        if(!Validator.alreadyTraversed(currentPosition, ValidationEnums.MOVE_FORWARD_Y)
-                && Validator.checkForObstacle(currentPosition, ValidationEnums.MOVE_FORWARD_Y)
-                && (currentPosition.getY()+1)<currentPosition.getM()) {
-            currentPosition.setY(currentPosition.getY() + 1);
+        if(!Validator.alreadyTraversed(currentPosition, ValidationEnums.MOVE_BACKWARD_X)
+                && Validator.checkForObstacle(currentPosition, ValidationEnums.MOVE_BACKWARD_X)
+                && (currentPosition.getX()-1)>=0) {
+            currentPosition.setX(currentPosition.getX()-1);
             currentPosition.setDirectionChanged(false);
         } else{
             System.out.println("Position Outside Rectangular plane!!!\nCurrent position :"+currentPosition.toString());
@@ -19,13 +19,13 @@ public class North implements Direction{
 
     @Override
     public void moveRight(Position currentPosition) {
-        currentPosition.setDirection("E");
+        currentPosition.setDirection("N");
         currentPosition.setDirectionChanged(true);
     }
 
     @Override
     public void moveLeft(Position currentPosition) {
-        currentPosition.setDirection("W");
+        currentPosition.setDirection("S");
         currentPosition.setDirectionChanged(true);
     }
 }

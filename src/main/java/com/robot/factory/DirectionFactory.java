@@ -1,6 +1,7 @@
-package com.robot.factory;
+package main.java.com.robot.factory;
 
-import com.robot.model.*;
+import main.java.com.robot.model.*;
+import main.java.com.robot.model.*;
 
 public class DirectionFactory {
 
