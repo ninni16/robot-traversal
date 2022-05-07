@@ -19,6 +19,7 @@ its current position.
 
 INPUT:
 **Input to be provided through a text file stored under the codebase with file name : request.txt**
+
 Input format : 
 1. The first line of input is the top-right coordinates of the rectangular plan (M, N),
 2. Next two lines of input are about the robot
