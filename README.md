@@ -27,6 +27,11 @@ first line gives the robot's starting position, X,Y coordinates and a letter, al
 spaces
 second line is a series of commands for the robot
 
+Test Input
+4 4
+0 0 N
+MMMRMMLM
+
 Problem:
 Where would the robot stop travelling?
 OUTPUT:
