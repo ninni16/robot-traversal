@@ -19,7 +19,8 @@ public class RobotTraverse {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.out.println("Error in reading input");
             e.printStackTrace();
         }
         String[] inputArray = sb.toString().split(" ");

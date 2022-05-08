@@ -55,7 +55,7 @@ public class Position {
     }
 
     public void setDirectionChanged(Boolean directionChanged) {
-        isDirectionChanged = directionChanged;
+        this.isDirectionChanged = directionChanged;
     }
 
     public int getN() {
