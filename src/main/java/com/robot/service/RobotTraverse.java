@@ -1,7 +1,6 @@
 package main.java.com.robot.service;
 
 import main.java.com.robot.factory.DirectionFactory;
-import main.java.com.robot.model.Direction;
 import main.java.com.robot.model.Position;
 
 import java.io.*;

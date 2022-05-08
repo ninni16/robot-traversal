@@ -1,14 +1,13 @@
 package main.java.com.robot.factory;
 
-import main.java.com.robot.model.*;
-import main.java.com.robot.model.*;
+import main.java.com.robot.service.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class DirectionFactory {
 
-    Map<String, Direction> directions =  new HashMap<String,Direction>(){
+     private Map<String, Direction> directions =  new HashMap<String,Direction>(){
         {   put("N",new North());
             put("S",new South());
             put("E",new East());
