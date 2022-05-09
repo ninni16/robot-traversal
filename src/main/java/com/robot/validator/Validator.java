@@ -1,55 +1,55 @@
 package main.java.com.robot.validator;
 
-import main.java.com.robot.model.Position;
+import main.java.com.robot.model.RobotDetails;
 
 public class Validator {
 
-    public static Boolean checkForObstacle(Position position, ValidationEnums validationCriteria){
+    public static Boolean checkForObstacle(RobotDetails robotDetails, ValidationEnums validationCriteria){
         if (validationCriteria.equals(ValidationEnums.MOVE_FORWARD_X)
-                && position.isEmpty(position.getX()+1, position.getY())){
+                && robotDetails.getPosition().isEmpty(robotDetails.getPosition().getX()+1, robotDetails.getPosition().getY())){
             return true;
         } else if (validationCriteria.equals(ValidationEnums.MOVE_BACKWARD_X)
-                && position.isEmpty(position.getX()-1, position.getY())){
+                && robotDetails.getPosition().isEmpty(robotDetails.getPosition().getX()-1, robotDetails.getPosition().getY())){
             return true;
         } else if (validationCriteria.equals(ValidationEnums.MOVE_FORWARD_Y)
-                && position.isEmpty(position.getX(), position.getY()+1)){
+                && robotDetails.getPosition().isEmpty(robotDetails.getPosition().getX(), robotDetails.getPosition().getY()+1)){
             return true;
         } else if (validationCriteria.equals(ValidationEnums.MOVE_BACKWARD_Y)
-                && position.isEmpty(position.getX()+1, position.getY()-1)){
+                && robotDetails.getPosition().isEmpty(robotDetails.getPosition().getX()+1, robotDetails.getPosition().getY()-1)){
             return true;
         } else {
-            System.out.println("There is an obstacle ahead!!!\nCurrent position : "+position.toString());
+            System.out.println("There is an obstacle ahead!!!\nCurrent position : "+robotDetails.toString());
             throw new RuntimeException("There is an obstacle ahead!!!");
         }
     }
 
-    public static Boolean alreadyTraversed(Position position, ValidationEnums validationCriteria) {
+    public static Boolean alreadyTraversed(RobotDetails robotDetails, ValidationEnums validationCriteria) {
         if (validationCriteria.equals(ValidationEnums.MOVE_FORWARD_X)) {
-            if (position.getTraversalHistory().add("(" + (position.getX()+1) + ", " + position.getY() + ")")) {
-                return false;
+            if (robotDetails.getTraversalHistory().add("(" + (robotDetails.getPosition().getX()+1) + ", " + robotDetails.getPosition().getY() + ")")) {
+                return false;// (0,0), (0,1) (2,3) Boolean
             } else {
-                System.out.println("Cell is already traversed\nCurrent position : " + position.toString());
+                System.out.println("Cell is already traversed\nCurrent position : " + robotDetails.toString());
                 throw new RuntimeException("Cell is already traversed");
             }
         } else if (validationCriteria.equals(ValidationEnums.MOVE_BACKWARD_X)) {
-            if (position.getTraversalHistory().add("(" + (position.getX() - 1) + ", " + position.getY() + ")")) {
+            if (robotDetails.getTraversalHistory().add("(" + (robotDetails.getPosition().getX() - 1) + ", " + robotDetails.getPosition().getY() + ")")) {
                 return false;
             } else {
-                System.out.println("Cell is already traversed\nCurrent position : " + position.toString());
+                System.out.println("Cell is already traversed\nCurrent position : " + robotDetails.toString());
                 throw new RuntimeException("Cell is already traversed");
             }
         } else if (validationCriteria.equals(ValidationEnums.MOVE_FORWARD_Y)) {
-        if (position.getTraversalHistory().add("(" + position.getX() + ", " + (position.getY()+1) + ")")) {
+        if (robotDetails.getTraversalHistory().add("(" + robotDetails.getPosition().getX() + ", " + (robotDetails.getPosition().getY()+1) + ")")) {
             return false;
         } else {
-            System.out.println("Cell is already traversed\nCurrent position : " + position.toString());
+            System.out.println("Cell is already traversed\nCurrent position : " + robotDetails.toString());
             throw new RuntimeException("Cell is already traversed");
         }
         } else if (validationCriteria.equals(ValidationEnums.MOVE_BACKWARD_Y)) {
-            if (position.getTraversalHistory().add("(" + position.getX() + ", " + (position.getY()-1) + ")")) {
+            if (robotDetails.getTraversalHistory().add("(" + robotDetails.getPosition().getX() + ", " + (robotDetails.getPosition().getY()-1) + ")")) {
                 return false;
             } else {
-                System.out.println("Cell is already traversed\nCurrent position : " + position.toString());
+                System.out.println("Cell is already traversed\nCurrent position : " + robotDetails.toString());
                 throw new RuntimeException("Cell is already traversed");
             }
         } else {

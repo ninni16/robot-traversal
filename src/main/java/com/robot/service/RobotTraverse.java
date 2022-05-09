@@ -2,6 +2,7 @@ package main.java.com.robot.service;
 
 import main.java.com.robot.factory.DirectionFactory;
 import main.java.com.robot.model.Position;
+import main.java.com.robot.model.RobotDetails;
 
 import java.io.*;
 
@@ -23,23 +24,23 @@ public class RobotTraverse {
             e.printStackTrace();
         }
         String[] inputArray = sb.toString().split(" ");
-        Position position = new Position(Integer.parseInt(inputArray[2]), Integer.parseInt(inputArray[3]), inputArray[4], Integer.parseInt(inputArray[0]), Integer.parseInt(inputArray[1]));
-        position.getTraversalHistory().add("("+position.getX()+", "+position.getY()+")");
+        RobotDetails robotDetails = new RobotDetails(new Position(Integer.parseInt(inputArray[2]), Integer.parseInt(inputArray[3])), inputArray[4], Integer.parseInt(inputArray[0]), Integer.parseInt(inputArray[1]));
+        robotDetails.getTraversalHistory().add("("+robotDetails.getPosition().getX()+", "+robotDetails.getPosition().getY()+")");
         String input = inputArray[5];
         DirectionFactory directionFactory = new DirectionFactory();
         Direction direction = null;
         for(int i=0;i<input.length();i++){
-            if(position.getDirectionChanged()) {
-                direction = directionFactory.getDirection(position.getDirection());
+            if(robotDetails.getDirectionChanged()) {
+                direction = directionFactory.getDirection(robotDetails.getDirection());
             }
             if(input.charAt(i)=='M')
-                direction.moveForward(position);
+                direction.moveForward(robotDetails);
             else if (input.charAt(i)=='R')
-                direction.moveRight(position);
+                direction.moveRight(robotDetails);
             else if ( input.charAt(i)=='L')
-                direction.moveLeft(position);
+                direction.moveLeft(robotDetails);
         }
-        System.out.println(position.toString());
+        System.out.println(robotDetails.toString());
     }
 
 }

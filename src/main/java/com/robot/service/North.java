@@ -1,32 +1,33 @@
 package main.java.com.robot.service;
 
-import main.java.com.robot.model.Position;
+import main.java.com.robot.model.RobotDetails;
 import main.java.com.robot.validator.ValidationEnums;
 import main.java.com.robot.validator.Validator;
 
 public class North implements Direction{
     @Override
-    public void moveForward(Position currentPosition) {
-        if(!Validator.alreadyTraversed(currentPosition, ValidationEnums.MOVE_FORWARD_Y)
-                && Validator.checkForObstacle(currentPosition, ValidationEnums.MOVE_FORWARD_Y)
-                && (currentPosition.getY()+1)<=currentPosition.getN()) {
-            currentPosition.setY(currentPosition.getY() + 1);
-            currentPosition.setDirectionChanged(false);
+    public void moveForward(RobotDetails robotDetails) {
+        if(!Validator.alreadyTraversed(robotDetails, ValidationEnums.MOVE_FORWARD_Y)
+                && Validator.checkForObstacle(robotDetails, ValidationEnums.MOVE_FORWARD_Y)
+                && (robotDetails.getPosition().getY()+1)<=robotDetails.getN()) {
+            robotDetails.getPosition().setY(robotDetails.getPosition().getY() + 1);
+            robotDetails.setDirectionChanged(false);
         } else{
-            System.out.println("Position Outside Rectangular plane!!!\nCurrent position :"+currentPosition.toString());
+            System.out.println("Position Outside Rectangular plane!!!\nCurrent position :"+robotDetails.toString());
             throw new RuntimeException("Position Outside Rectangular plane");
         }
     }
 
     @Override
-    public void moveRight(Position currentPosition) {
-        currentPosition.setDirection("E");
-        currentPosition.setDirectionChanged(true);
+    public void moveRight(RobotDetails robotDetails) {
+        robotDetails.setDirection("E");
+        robotDetails.setDirectionChanged(true);
     }
 
     @Override
-    public void moveLeft(Position currentPosition) {
-        currentPosition.setDirection("W");
-        currentPosition.setDirectionChanged(true);
+    public void moveLeft(RobotDetails robotDetails) {
+        robotDetails.setDirection("W");
+        robotDetails.setDirectionChanged(true);
+        countLeft(robotDetails);
     }
 }
